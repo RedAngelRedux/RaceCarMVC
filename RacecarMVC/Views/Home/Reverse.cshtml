@@ -1,0 +1,36 @@
+﻿@model RacecarMVC.Models.Palindrome
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col">
+            <img src="~/img/app-logos.svg" class="img-fluid center-block d-block mx-auto">
+            <hr>
+            <div class="display-6 fw-bold"><h1>Instructions</h1></div>
+            <p>Enter a word or sentence. Press the button and the input will be evaluated on whether it's a palindrome* or not.'</p>
+            <div class="display-6 fw-bold"><h1>Expected Result</h1></div>
+            <p>If the phrase you entered is a palindrome*, you will be informed via a green message box otherwise you will see a red box.  The resulting reversal of the string will also appear.</p>
+            <div class="display-6 fw-bold"><h1>My Notes</h1></div>
+            <p>Here I reverse a string and test it as a palindrome* as I did in the <a href="https://racecar.sammynava.com">javascript version</a>, but this time I do it with C# using the MVC pattern.</p>
+            <div class="display-6 fw-bold"><h6>*Palindrome - a word, phrase, or sequence that reads the same backward as forward, e.t. Race Car</h6></div>
+        </div>
+        <div class="col border-start border-end border-2">
+
+            <form class="row" asp-action="Reverse" asp-controller="Home" method="post">
+                <div class="col-12 col-lg-6">
+                    <label type="label" class="form-label" asp-for="InputWord">Enter a word, phrase, or string...</label>
+                    <input class="form-control" asp-for="InputWord" placeholder="" value="@Model.InputWord" aria-label="Input Test Phrase">
+                </div>
+                <p></p>
+                <div class="col-12 border border-warning" id="runtime"></div>
+                <div class="col-12 d-flex justify-content-end mb-3">
+                    <button type="submit" id="btnSubmit" class="btn btn-warning mt-2">Submit</button>
+                </div>
+            </form>
+
+           <div id="resultsDiv" class="border">
+                <!-- === Either alertTemplate or tableTemplate Goes Here-->
+                @Model.Message
+            </div>
+        </div>
+    </div>
+</div>
